@@ -58,7 +58,14 @@ app.use((req, res, next) => {
   res.json = function (body) {
     const protocol = req.headers['x-forwarded-proto'] || req.protocol;
     const host = req.headers['x-forwarded-host'] || req.get('host');
-    const currentOrigin = `${protocol}://${host}`;
+    
+    // Determine the base URL for rewriting image paths:
+    // 1. Temporary testing: If on Render, explicitly use the Render URL.
+    // 2. Future Hostinger deployment: Automatically uses the dynamic request host 
+    //    (meaning if frontend and backend share a domain, it works seamlessly).
+    const currentOrigin = (host && host.includes('onrender.com')) 
+      ? 'https://avni-backend-2pt5.onrender.com' 
+      : `${protocol}://${host}`;
     
     if (body) {
       try {
