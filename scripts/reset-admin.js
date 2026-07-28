@@ -15,14 +15,14 @@ const resetAdmin = async () => {
     const superAdmin = await Admin.create({
       name: 'Super Admin',
       email: 'adminavnicarscollections@gmail.com',
-      password: 'AOneCarBazaar@123!',
+      password: 'avniauto1234',
       role: 'super_admin'
     });
     
     console.log('\n=============================================');
     console.log('✅ Super Admin account created successfully.');
     console.log('Email: adminavnicarscollections@gmail.com');
-    console.log('Password: AOneCarBazaar@123!');
+    console.log('Password: avniauto1234');
     console.log('=============================================');
     console.log('\n⚠️ IMPORTANT: Remember to revert your Render Start Command');
     console.log('back to "node server.js" to run your application.');
